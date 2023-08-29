@@ -3,6 +3,7 @@
 namespace Mediadesk\LinkedinManager;
 
 use Mediadesk\LinkedinManager\Services\LinkedinAuthorization;
+use Mediadesk\LinkedinManager\Services\LinkedinMedia;
 use Mediadesk\LinkedinManager\Services\LinkedinMediaRegister;
 use Mediadesk\LinkedinManager\Services\LinkedinPost;
 use Mediadesk\LinkedinManager\Services\LinkedinProfile;
@@ -13,24 +14,26 @@ class LinkedinAgent
 {
 
     /**
-     * Return the url to sign in with linkedin.
-     * 
-     * @param  string  $client_id Client ID of a Linkedin developer account
-     * @param  string  $redirect_uri Pass the redirect uri of your application to receive code, Typically its considered as a callback for your linkedin callback
-     * @return string
-     */
+    * Returns the URL for signing in with LinkedIn.
+    *
+    * @param string $client_id The Client ID of a LinkedIn developer account.
+    * @param string $redirect_uri The Redirect URI of your application where the authorization code will be sent, typically used as a callback.
+    *
+    * @return string The URL for signing in with LinkedIn.
+    */
     public function getLoginUrl(string $client_id, string $redirect_uri): string
     {
        return (new LinkedinAuthorization($client_id, $redirect_uri))->getLoginLink();
     }
 
 
-    /**
-     * Returns the LinkedinProfile Object
-     *
-     * @param  string  $access_token An accesstoken of authenticated user
-     * @return LinkedinProfile
-     */
+   /**
+    * Retrieves the LinkedinProfile Object.
+    *
+    * @param string $access_token The access token of a specific LinkedIn user.
+    *
+    * @return LinkedinProfile The LinkedInProfile Object representing the user's LinkedIn profile.
+    */
     public function getProfile(string $access_token): LinkedinProfile
     {
        return (new LinkedinProfile($access_token));
@@ -42,12 +45,12 @@ class LinkedinAgent
      *
      * @param  string $text A Text Message
      * @param  string $member_id A member ID of a specific linkedin Profile
-     * @param  string $access_token Accesstoken of a specific user of linkedin 
+     * @param  string $access_token The access token of a particular LinkedIn user.
      * 
      * 
      * @return mixed
      */
-    public function createTextPost(string $text, mixed $member_id, string $access_token)
+    public function createPost(string $text, mixed $member_id, string $access_token)
     {
        $specific_post = (new LinkedinSpecificContent($text));
 
@@ -56,14 +59,36 @@ class LinkedinAgent
 
 
     /**
-     * Returns the Media Register Object for building image upload request
-     *
-     * @param  string $member_id A member ID of a specific linkedin Profile
-     * @param  string $access_token Accesstoken of a specific user of linkedin 
-     * 
-     * 
-     * @return LinkedinMediaRegister
-     */
+    * Retrieves a created post along with media responses from the LinkedIn Server.
+    *
+    * @param string $text The text message content.
+    * @param array<int, LinkedinMedia> $medias The uploaded LinkedIn media items.
+    * @param string $member_id The member ID associated with a specific LinkedIn Profile.
+    * @param string $access_token The access token of a particular LinkedIn user.
+    *
+    * @return mixed The response containing the created post and associated media from the server.
+    */
+    public function createPostWithMedia(string $text, array $medias = [], mixed $member_id, string $access_token)
+    {
+       $specific_post = (new LinkedinSpecificContent($text));
+
+       foreach($medias as $media)
+       {
+         $specific_post->setImage($media);
+       }
+
+       return (new LinkedinPost($member_id, $specific_post))->create($access_token);
+    }
+
+
+    /**
+    * Retrieves the Media Register Object for constructing an image upload request.
+    *
+    * @param string $member_id The member ID of a specific LinkedIn Profile.
+    * @param string $access_token The access token of a particular LinkedIn user.
+    *
+    * @return LinkedinMediaRegister The Media Register Object used for building upload requests.
+    */
     public function createMediaRegister(mixed $member_id, string $access_token): LinkedinMediaRegister
     {
          return (new LinkedinMediaRegister($member_id))
@@ -71,16 +96,15 @@ class LinkedinAgent
     }
 
 
-    /**
-     * Returns the Media ID for the uploaded media
-     *
-     * @param  LinkedinMediaRegister $media_register A Media Register Object
-     * @param  string $file Absolute path of a media
-     * @param  string $access_token Accesstoken of a specific user of linkedin 
-     * 
-     * 
-     * @return mixed
-     */
+   /**
+    * Retrieves the Media ID for the uploaded media.
+    *
+    * @param LinkedinMediaRegister $media_register A Media Register Object.
+    * @param string $file Absolute path of the media.
+    * @param string $access_token The access token of a specific LinkedIn user.
+    *
+    * @return mixed The response containing the Media ID for the uploaded media.
+    */
     public function uploadMedia(LinkedinMediaRegister $media_register, string $file, string $access_token): mixed
     {
          return $this->mediaUploadAdapter($media_register->getAssetUrl(), $file)
@@ -89,20 +113,31 @@ class LinkedinAgent
 
 
     /**
-     * Uploads the linkedin media file 
-     *
-     * @param  string $asset_url LinkedinMediaRegister asset url
-     * @param  string $file_path Absolute media path 
-     * 
-     * 
-     * @return LinkedinUploadImage
-     * 
-     */
+    * Uploads a LinkedIn media file.
+    *
+    * @param string $asset_url The asset URL from LinkedinMediaRegister.
+    * @param string $file_path The absolute path of the media file.
+    *
+    * @return LinkedinUploadImage The response containing information about the uploaded image on LinkedIn.
+    */
      public function mediaUploadAdapter(string $asset_url, string $file_path): LinkedinUploadImage
      {
          return (new LinkedinUploadImage($asset_url, $file_path));
      }
 
+
+     /**
+    * Creates an image gallery for uploading images.
+    *
+    * @param string $title The title of the media.
+    * @param string $description The description of the media.
+    *
+    * @return LinkedinMedia The created LinkedIn media object.
+    */
+    public function LinkedinMedia(string $title, string $description, mixed $media_id): LinkedinMedia
+    {
+         return (new LinkedinMedia($title, $description, $media_id));
+    }
      
 }
 
