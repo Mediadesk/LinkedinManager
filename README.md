@@ -1,4 +1,4 @@
-# Linkedin Manager
+# Linkedin Manager (Beta)
 LinkedIn Integration Package for Laravel (Unofficial Package)
 
 This package provides integration with the LinkedIn API for Laravel applications. It allows you to perform various LinkedIn-related tasks such as authenticating users, retrieving profiles, creating and deleting posts, and more.
