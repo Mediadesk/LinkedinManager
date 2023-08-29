@@ -2,6 +2,7 @@
 
 namespace Mediadesk\LinkedinManager;
 
+use Mediadesk\LinkedinManager\Services\DeleteLinkedinPost;
 use Mediadesk\LinkedinManager\Services\LinkedinAuthorization;
 use Mediadesk\LinkedinManager\Services\LinkedinMedia;
 use Mediadesk\LinkedinManager\Services\LinkedinMediaRegister;
@@ -152,6 +153,19 @@ class LinkedinAgent
     {
          return (new ViewLinkedinPost($post_id))->view($access_token);
     }
+
+
+    /**
+    * Delete a LinkedIn post.
+    *
+    * @param string $post_id The ID of the post to be deleted.
+    * @param string $access_token The access token of a specific LinkedIn user.
+    * @return mixed The response from the LinkedIn server after the deletion.
+    */
+   public function deletePost(string $post_id, string $access_token): mixed
+   {
+      return (new DeleteLinkedinPost($post_id))->delete($access_token);
+   }
      
 }
 

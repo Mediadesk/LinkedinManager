@@ -17,14 +17,14 @@ use GuzzleHttp\Psr7\Request;
 trait HttpRequestHandler
 {
      /**
-     * A method for sending requesting from another server used for any linkedin
+     * Sends an HTTP request to the LinkedIn server.
+     *
+     * @param  string $full_url The full URL to which the request is sent.
+     * @param  array $header_info The headers to include in the request.
+     * @param  mixed $body The body of the request.
+     * @param  string $method The HTTP method of the request (GET, POST, PUT, DELETE, etc.).
      * 
-     * @param  string $url Full Url
-     * @param  array  $headers Full Headers
-     * @param  array  $body Post Params
-     * @param  string $method Request method
-     * @return mixed
-     * 
+     * @return mixed The decoded JSON response from the server.
      */
     public function sendRequest($full_url, $header_info, $body, $method): mixed
     {
@@ -67,7 +67,15 @@ trait HttpRequestHandler
         return $response->status();
     }
 
-
+    /**
+     * Upload files over PUT method using  guzzle
+     * 
+     * @param  string  $url Full Url
+     * @param  string  $file_path Absolute File Path
+     * @param  array   $header Request headers
+     * 
+     * @return mixed
+     */
     public function uploadFileWithGuzzle(string $url, string $file_path, array $header)
     {
         $client = new Client();
