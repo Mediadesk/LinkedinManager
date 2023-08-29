@@ -54,10 +54,12 @@ trait HttpRequestHandler
      */
     public function UploadFileRequest(string $url, string $file_path, array $header): mixed
     {
-        $file_contents = file_get_contents($file_path);
+        $file_contents     = file_get_contents($file_path);
+        $json_data         = json_decode($file_contents);
+        $encoded_json_data = json_encode($json_data, JSON_UNESCAPED_UNICODE);
 
-        $response = Http::withHeaders($header)
-                        ->put($url, $file_contents);
+        $response          = Http::withHeaders($header)
+                               ->put($url, $encoded_json_data);
 
         return $response->status();
     }
