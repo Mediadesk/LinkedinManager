@@ -3,6 +3,8 @@ LinkedIn Integration Package for Laravel (Unofficial Package)
 
 This package provides integration with the LinkedIn API for Laravel applications. It allows you to perform various LinkedIn-related tasks such as authenticating users, retrieving profiles, creating and deleting posts, and more.
 
+**Please Note:** This package is currently in active development and should be used with caution. While we are working hard to ensure stability and functionality, there might be frequent updates and changes that could impact your usage.
+
 
 ## Get Started
 
@@ -12,8 +14,16 @@ To get started with the LinkedinManager package, follow these steps:
 
 Install the package using Composer:
    ```sh
-   composer require mediadesk/linkedin-manager
+   composer require mediadesk/linkedin-manager:dev-main
    ```
+
+## Publish Config File
+
+To customize the configuration settings of the Mediadesk Linkedin Manager package, you can publish the config file using the following Artisan command:
+
+```sh
+php artisan vendor:publish --tag=mediadesk-linkedin
+```
 
 
 ## Configuration
