@@ -9,6 +9,7 @@ use Mediadesk\LinkedinManager\Services\LinkedinPost;
 use Mediadesk\LinkedinManager\Services\LinkedinProfile;
 use Mediadesk\LinkedinManager\Services\LinkedinSpecificContent;
 use Mediadesk\LinkedinManager\Services\LinkedinUploadImage;
+use Mediadesk\LinkedinManager\Services\ViewLinkedinPost;
 
 class LinkedinAgent
 {
@@ -126,7 +127,7 @@ class LinkedinAgent
      }
 
 
-     /**
+   /**
     * Creates an image gallery for uploading images.
     *
     * @param string $title The title of the media.
@@ -137,6 +138,19 @@ class LinkedinAgent
     public function LinkedinMedia(string $title, string $description, mixed $media_id): LinkedinMedia
     {
          return (new LinkedinMedia($title, $description, $media_id));
+    }
+
+
+ 
+    /**
+    * View details of a specific post.
+    *
+    * @param string $post_id The ID of the post to view.
+    * @param string $access_token The access token of a specific LinkedIn user.
+    */
+    public function viewPost(string $post_id, string $access_token): mixed
+    {
+         return (new ViewLinkedinPost($post_id))->view($access_token);
     }
      
 }

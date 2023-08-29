@@ -24,6 +24,7 @@ trait HttpRequestHandler
      * @param  array  $body Post Params
      * @param  string $method Request method
      * @return mixed
+     * 
      */
     public function sendRequest($full_url, $header_info, $body, $method): mixed
     {
