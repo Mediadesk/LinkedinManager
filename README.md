@@ -16,7 +16,7 @@ Install the package using Composer:
    ```
 
 
-Configuration
+## Configuration
 
 Ensure the following environment variables are set in your .env file:
 
@@ -38,7 +38,7 @@ $linkedin_agent = new LinkedinAgent();
 $loginUrl       = $linkedin_agent->getLoginUrl();
 ```
 
-Generating Access Token
+## Generating Access Token
 
 Generate an access token from the callback URL. You will receive the code and state in the URL parameters. Use the following code:
 
