@@ -46,7 +46,7 @@ class ViewLinkedinPost
      */
     public function view(string $access_token): mixed
     {
-        $host             = config('linkedin.api_host');
+        $host             = config('mediadesk-linkedin.api_host');
         $full_url         = $host . "/v2/ugcPosts/$this->post_id";
         $payload          = [];
 

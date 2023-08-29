@@ -85,7 +85,7 @@ class LinkedinMediaRegister
      */
     public function register($access_token): self
     {
-        $url =   config('linkedin.api_host') ."/v2/assets?action=registerUpload";
+        $url =   config('mediadesk-linkedin.api_host') ."/v2/assets?action=registerUpload";
 
         $response = $this->sendRequest($url, $this->getAuthorizationHeader($access_token), $this->getPayload(), "POST");
 

@@ -38,7 +38,7 @@ class DeleteLinkedinPost
      */
     public function delete(string $access_token)
     {
-        $host = config('linkedin.api_host');
+        $host = config('mediadesk-linkedin.api_host');
         $full_url = $host . "/v2/ugcPosts/" . $this->post_id;
         $payload = [];
 

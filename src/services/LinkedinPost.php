@@ -55,7 +55,7 @@ class LinkedinPost
      */
     public function create(string $access_token)
     {
-        $host             = config('linkedin.api_host');
+        $host             = config('mediadesk-linkedin.api_host');
         $full_url         = $host . "/v2/ugcPosts";
         
         return $this->sendRequest($full_url, $this->getAuthorizationHeader($access_token), $this->getPayload(), "POST");
