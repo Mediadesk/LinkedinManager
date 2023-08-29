@@ -19,14 +19,11 @@ class LinkedinAgent
     /**
     * Returns the URL for signing in with LinkedIn.
     *
-    * @param string $client_id The Client ID of a LinkedIn developer account.
-    * @param string $redirect_uri The Redirect URI of your application where the authorization code will be sent, typically used as a callback.
-    *
     * @return string The URL for signing in with LinkedIn.
     */
-    public function getLoginUrl(string $client_id, string $redirect_uri): string
+    public function getLoginUrl(): string
     {
-       return (new LinkedinAuthorization($client_id, $redirect_uri))->getLoginLink();
+       return (new LinkedinAuthorization(config('mediadesk-linkedin.client_id'), config('mediadesk-linkedin.callback')))->getLoginLink();
     }
 
 
