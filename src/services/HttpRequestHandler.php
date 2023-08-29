@@ -5,23 +5,22 @@ namespace Mediadesk\LinkedinManager\Services;
 
 use Illuminate\Support\Facades\Http;
 
+/**
+ * This class serves the purpose of sending server requests to - 
+ * third-party servers for all LinkedIn API endpoints.
+ * 
+ * @var self
+ */
+
 trait HttpRequestHandler
 {
-
-    /**
-     * A Default headers used to pass linkedin endpoints
-     * @var string
-     */
-    protected array $default_header = ['Accept' => 'application/json', 'Content-Type' => 'application/json'];
-
-
      /**
      * A method for sending requesting from another server used for any linkedin
      * 
-     * @param string $url Full Url
-     * @param array $headers Full Headers
-     * @param array $body Post Params
-     * @param string $method Request method
+     * @param  string $url Full Url
+     * @param  array  $headers Full Headers
+     * @param  array  $body Post Params
+     * @param  string $method Request method
      * @return mixed
      */
     public function sendRequest($full_url, $header_info, $body, $method): mixed
@@ -41,6 +40,5 @@ trait HttpRequestHandler
 
         return json_decode($response);
     }
-
 
 }
