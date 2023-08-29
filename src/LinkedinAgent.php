@@ -3,6 +3,7 @@
 namespace Mediadesk\LinkedinManager;
 
 use Mediadesk\LinkedinManager\Services\DeleteLinkedinPost;
+use Mediadesk\LinkedinManager\Services\LinkedinAccessToken;
 use Mediadesk\LinkedinManager\Services\LinkedinAuthorization;
 use Mediadesk\LinkedinManager\Services\LinkedinMedia;
 use Mediadesk\LinkedinManager\Services\LinkedinMediaRegister;
@@ -166,6 +167,23 @@ class LinkedinAgent
    {
       return (new DeleteLinkedinPost($post_id))->delete($access_token);
    }
+
+
+
+    /**
+     * Genrate Access token using a code returned from callback link.
+     *
+     * @param string $code An unique code received from the callback
+     * 
+     * @param string $state A State received from callback or redirect
+     * 
+     * @return mixed
+    */
+    public function getAccessToken(string $code, string $state): string|null
+    {
+       return (new LinkedinAccessToken(config('mediadesk-linkedin.client_id'), config('mediadesk-linkedin.secret'), $code, config('mediadesk-linkedin.callback'), $state))
+                     ->getAccessToken();
+    }
      
 }
 

@@ -2,6 +2,7 @@
 
 namespace Mediadesk\LinkedinManager\Services;
 
+use Exception;
 
 class LinkedinAccessToken
 {
@@ -29,6 +30,11 @@ class LinkedinAccessToken
      */
     protected $code;
 
+    /**
+     * @var string A State received from callback or redirect
+     */
+    protected $state;
+
 
     /**
      * Returns the AccessToken for Managing accounts on behalf of a user
@@ -41,12 +47,13 @@ class LinkedinAccessToken
      * @return self
      */
 
-    public function __construct($client_id, $client_secret, $code, $redirect_uri)
+    public function __construct(string $client_id, string $client_secret, string $code, string $redirect_uri, string $state)
     {
         $this->client_id     = $client_id;
         $this->client_secret = $client_secret;
         $this->redirect_uri  = $redirect_uri;
         $this->code          = $code;
+        $this->state         = $state;
     }
 
 
@@ -98,13 +105,33 @@ class LinkedinAccessToken
 
 
     /**
-     * Returns the accesstoken for a account
+     * Validates the state during callback
+     *
+     * @return bool
+     * 
+     * @throws Exception
+     */
+    public function validateCallbackState(): bool
+    {
+        if(session()->get("linkedin_auth_state") == $this->state)
+        {
+            return true;
+        }
+
+        throw new Exception('Invalid Redirect request!');
+    }
+
+
+    /**
+     * Returns the access token for a account
      *
      * @return string|null
      */
 
     public function getAccessToken(): string|null
     {
+        $this->validateCallbackState();
+
         $response  = $this->sendRequest($this->generateUrl(), [], [], "POST");
 
         if($this->validate($response))
