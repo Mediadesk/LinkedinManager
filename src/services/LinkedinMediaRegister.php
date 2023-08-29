@@ -4,7 +4,7 @@ namespace Mediadesk\LinkedinManager\Services;
 
 
 /**
- * This class is utilized to create a Media Register Object required for uploading images.
+ * This class is used to create a Media Register Object necessary for image uploads.
  *
  * @return self
  */
@@ -36,8 +36,8 @@ class LinkedinMediaRegister
     protected $asset_url;
 
 
-     /**
-     * Determines whether this object can be a media register.
+    /**
+     * Indicates whether this object is eligible for media registration.
      *
      * @var bool
      */
