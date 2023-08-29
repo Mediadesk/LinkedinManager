@@ -12,4 +12,12 @@ trait LinkedinRequestHeaders
             'Content-Type'  => 'application/json'
         ];
     }
+
+
+    public function authorizationHeader(string $access_token): array
+    {
+        return [
+            "Authorization" => 'Bearer '. $access_token
+        ];
+    }
 }

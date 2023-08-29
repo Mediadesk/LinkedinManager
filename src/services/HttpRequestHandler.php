@@ -4,6 +4,8 @@ namespace Mediadesk\LinkedinManager\Services;
 
 
 use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request;
 
 /**
  * This class serves the purpose of sending server requests to - 
@@ -63,5 +65,23 @@ trait HttpRequestHandler
 
         return $response->status();
     }
+
+
+    public function uploadFileWithGuzzle(string $url, string $file_path, array $header)
+    {
+        $client = new Client();
+        $file   = file_get_contents($file_path);
+        $request = new Request(
+            'PUT',
+            $url,
+            $header,
+            $file
+        );
+
+        $response = $client->send($request);
+
+        return $response->getStatusCode();
+    }
+
 
 }

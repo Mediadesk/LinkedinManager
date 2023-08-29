@@ -57,8 +57,8 @@ class LinkedinUploadImage
      */
     public function create(string $access_token, string $media_id): mixed
     {
-        if ($this->UploadFileRequest($this->link, $this->file, 
-                $this->getAuthorizationHeader($access_token)) === 201) 
+        if ($this->uploadFileWithGuzzle($this->link, $this->file, 
+                $this->authorizationHeader($access_token)) === 201) 
         {
              return $media_id;
         }
