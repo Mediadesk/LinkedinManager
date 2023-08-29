@@ -4,7 +4,7 @@ namespace Mediadesk\LinkedinManager\Services;
 
 trait LinkedinRequestHeaders
 {
-    public function getAuthorizationHeader($access_token)
+    public function getAuthorizationHeader(string $access_token): array
     {
         return [
             "Authorization" => 'Bearer '. $access_token,

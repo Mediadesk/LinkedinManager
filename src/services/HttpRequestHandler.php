@@ -41,4 +41,25 @@ trait HttpRequestHandler
         return json_decode($response);
     }
 
+
+
+    /**
+     * Upload files over PUT method
+     * 
+     * @param  string  $url Full Url
+     * @param  string  $file_path Absolute File Path
+     * @param  array   $header Request headers
+     * 
+     * @return mixed
+     */
+    public function UploadFileRequest(string $url, string $file_path, array $header): mixed
+    {
+        $file_contents = file_get_contents($file_path);
+
+        $response = Http::withHeaders($header)
+                        ->put($url, $file_contents);
+
+        return $response->status();
+    }
+
 }
