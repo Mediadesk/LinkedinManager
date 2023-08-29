@@ -1,0 +1,31 @@
+{
+    "name": "mediadesk/linkedin-manager",
+    "description": "A Wrapper for Managing Linkedin accounts",
+    "keywords": ["php","laravel", "social", "social-media", "Linkedin"],
+    "type": "library",
+    "version": "1.0.0",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mediadesk\\LinkedinManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mediadesk",
+            "email": "mediadeskonline@gmail.com"
+        }
+    ],
+     "require": {
+        "php": ">=8.1",
+        "illuminate/support": "*"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mediadesk\\LinkedinManager\\MediadeskLinkedinServiceProvider"
+            ]
+        }
+    }
+}
