@@ -1,6 +1,6 @@
 {
     "name": "mediadesk/linkedin-manager",
-    "description": "A Wrapper for Managing Linkedin accounts",
+    "description": "LinkedIn API Wrapper for Laravel",
     "keywords": ["php","laravel", "social", "social-media", "Linkedin"],
     "type": "library",
     "version": "1.0.0",
