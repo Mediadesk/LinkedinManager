@@ -2,16 +2,16 @@
 
 namespace Mediadesk\LinkedinManager;
 
-use Mediadesk\LinkedinManager\Services\DeleteLinkedinPost;
-use Mediadesk\LinkedinManager\Services\LinkedinAccessToken;
-use Mediadesk\LinkedinManager\Services\LinkedinAuthorization;
-use Mediadesk\LinkedinManager\Services\LinkedinMedia;
-use Mediadesk\LinkedinManager\Services\LinkedinMediaRegister;
-use Mediadesk\LinkedinManager\Services\LinkedinPost;
-use Mediadesk\LinkedinManager\Services\LinkedinProfile;
-use Mediadesk\LinkedinManager\Services\LinkedinSpecificContent;
-use Mediadesk\LinkedinManager\Services\LinkedinUploadImage;
-use Mediadesk\LinkedinManager\Services\ViewLinkedinPost;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\DeleteLinkedinPost;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinAccessToken;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinAuthorization;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinMedia;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinMediaRegister;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinPost;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinProfile;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinSpecificContent;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\LinkedinUploadImage;
+use Mediadesk\LinkedinManager\LinkedInAPIClient\ViewLinkedinPost;
 
 class LinkedinAgent
 {

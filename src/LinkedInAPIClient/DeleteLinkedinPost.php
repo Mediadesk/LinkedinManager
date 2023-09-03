@@ -1,8 +1,6 @@
 <?php
 
-namespace Mediadesk\LinkedinManager\Services;
-
-use Illuminate\Support\Facades\Http;
+namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
 /**
  * Class DeleteLinkedinPost

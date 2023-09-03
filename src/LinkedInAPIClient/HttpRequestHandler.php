@@ -1,6 +1,6 @@
 <?php
 
-namespace Mediadesk\LinkedinManager\Services;
+namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
 
 use Illuminate\Support\Facades\Http;
