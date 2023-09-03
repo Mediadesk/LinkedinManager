@@ -21,7 +21,7 @@ To get started with the LinkedinManager package, follow these steps:
 
 Install the package using Composer:
    ```sh
-   composer require mediadesk/linkedin-manager:dev-main
+   composer require mediadesk/linkedin-manager
    ```
 
 ## Publish Config File
