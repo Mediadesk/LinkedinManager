@@ -2,6 +2,9 @@
 
 namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
+use Mediadesk\LinkedinManager\Requests\LinkedinRequestHeaders;
+
 /**
  * Class DeleteLinkedinPost
  *

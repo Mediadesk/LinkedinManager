@@ -3,6 +3,7 @@
 namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
 use Exception;
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
 
 class LinkedinAccessToken
 {

@@ -2,6 +2,8 @@
 
 namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
+use Mediadesk\LinkedinManager\Requests\LinkedinRequestHeaders;
 
 /**
  * This class is responsible for previewing the contents of a specific post.
