@@ -1,7 +1,9 @@
 <?php
 
-namespace Mediadesk\LinkedinManager\Services;
+namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
+use Mediadesk\LinkedinManager\Requests\LinkedinRequestHeaders;
 
 /**
  * This class is used to create a Media Register Object necessary for image uploads.

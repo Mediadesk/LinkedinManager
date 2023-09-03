@@ -1,8 +1,10 @@
 <?php
 
-namespace Mediadesk\LinkedinManager\Services;
+namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
 use Exception;
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
+use Mediadesk\LinkedinManager\Requests\LinkedinRequestHeaders;
 
 class LinkedinProfile
 {

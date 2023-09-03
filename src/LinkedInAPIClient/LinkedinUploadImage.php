@@ -1,7 +1,9 @@
 <?php
 
-namespace Mediadesk\LinkedinManager\Services;
+namespace Mediadesk\LinkedinManager\LinkedInAPIClient;
 
+use Mediadesk\LinkedinManager\Requests\HttpRequestHandler;
+use Mediadesk\LinkedinManager\Requests\LinkedinRequestHeaders;
 
 /**
  * This class is intended for uploading images using a LinkedIn media register asset link.
